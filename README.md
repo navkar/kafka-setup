@@ -128,13 +128,35 @@ navkar$ bin/zkServer.sh stop
 
 # Step 3 : Apache Kafka Setup
 
+Lets install Kafka on the localbox
+
 ## Step 3.1 Download Kafka
+
+File : kafka_2.12-0.10.2.1.tgz
 
 ## Step 3.2 Extract the tar file
 
+```bash
+navkar$ cd /opt
+navkar$ tar -zxf ~/Downloads/kafka_2.12-0.10.2.1.tgz
+navkar$ cd kafka_2.12-0.10.2.1
+```
+
 ## Step 3.3 Start Server
 
+```bash
+navkar$ bin/kaka-server-start.sh config/server.properties
+```
+
 ## Step 3.4 Stop Server
+
+```bash
+navkar$ bin/kaka-server-stop.sh config/server.properties
+```
+
+# Step 4 : Getting everything to work together
+
+
 
 
 

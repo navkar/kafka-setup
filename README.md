@@ -13,8 +13,9 @@ If you don't have the correct version of Java, continue with the next steps.
 
 ## Step 1.1 Download JDK tar file
 
-The version is JDK 8u 131 and the file is 'jdk-8u131-linux-x64.tar.gz'
-Assuming that the tar file is located in Downloads directory
+The version is JDK 8u 131 and the file is 'jdk-8u131-linux-x64.tar.gz'.
+
+Assuming that the tar file is located in `Downloads` directory
 
 ```bash
 navkar$ cd ~/Downloads
@@ -30,8 +31,9 @@ navkar$ tar -zxf ~/Downloads/jdk-8u131-linux-x64.tar.gz
 
 ## Step 1.3 Set JAVA HOME
 
-Add the following commands to ~/.bashrc file
-NOTE: Please use your due deligence on this, since they vary for every setup
+Add the following commands to ~/.bashrc file.
+
+NOTE: Please use your due deligence on this, since they vary for every setup.
 
 ```bash
 export JAVA_HOME=/usr/jdk/xxx
@@ -54,7 +56,8 @@ navkar$ mkdir data
 
 ## Step 2.3 Create configuration file
 
-Create configuration file named 'conf/zoo.cfg' using the command vi 'conf/zoo.cfg'
+Create configuration file named 'conf/zoo.cfg' using the command vi 'conf/zoo.cfg'.
+
 
 ```bash
 navkar$ cd /opt/zookeeper-3.4.10/conf
@@ -76,7 +79,7 @@ Password:
 ZooKeeper JMX enabled by default
 Using config: /opt/zookeeper-3.4.10/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
-Naveens-MacBook-Pro:zookeeper-3.4.10 navkar$ jps
+navkar$ jps
 3626 Jps
 ```
 
@@ -118,7 +121,9 @@ WatchedEvent state:SyncConnected type:None path:null
 ## Step 2.6 Stop Zookeeper 
 
 ```bash
-$ bin/zkServer.sh stop
+navkar$ pwd
+/opt/zookeeper-3.4.10
+navkar$ bin/zkServer.sh stop
 ```
 
 # Step 3 : Apache Kafka Setup

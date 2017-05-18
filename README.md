@@ -1,4 +1,4 @@
-# kafka-setup
+# HOW TO Quickly Setup Kafka on your MAC OS and get it to work
 Quickly setting up Kafka on your local box
 
 # Step 1 : Verify Java installation
@@ -156,7 +156,64 @@ navkar$ bin/kaka-server-stop.sh config/server.properties
 
 # Step 4 : Getting everything to work together
 
+## Step 4.1 Start Zookeeper
 
+```bash
+navkar$ sudo bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+## Step 4.2 Start Kafka broker
+
+```bash
+navkar$ sudo bin/kafka-server-start.sh config/server.properties
+```
+
+## Step 4.3 Creating a Kafka Topic
+
+```bash
+navkar$ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic outgoing-messages
+Created topic "outgoing-messages".
+```
+
+## Step 4.4 Getting a List of topics
+
+```bash
+navkar$ bin/kafka-topics.sh --list --zookeeper localhost:2181
+outgoing-messages
+welcome
+```
+
+## Step 4.5 Start producer to send messages
+
+This command will create a CLI for sending messages through command line. Every line is interpreted as a message.
+
+```bash
+navkar$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic welcome
+```
+
+## Step 4.6 Start consumer to receive messages
+
+This command will create a CLI for receiving messages through command line.
+
+```bash
+navkar$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic welcome --from-beginning 
+Using the ConsoleConsumer with old consumer is deprecated and will be removed in a future major release. Consider using the new consumer by passing [bootstrap-server] instead of [zookeeper].
+```
+## Step 4.7 Java Process Status (JPS) command
+
+```bash
+navkar$ pwd
+/opt/zookeeper-3.4.10
+navkar$ jps
+7025 Jps
+6278 ConsoleConsumer
+5018 ConsoleProducer
+navkar$ jps -v
+6278 ConsoleConsumer -Xmx512M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=/opt/kafka_2.12-0.10.2.1/bin/../logs -Dlog4j.configuration=file:/opt/kafka_2.12-0.10.2.1/bin/../config/tools-log4j.properties
+7047 Jps -Dapplication.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home -Xms8m
+5018 ConsoleProducer -Xmx512M -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=/opt/kafka_2.12-0.10.2.1/bin/../logs -Dlog4j.configuration=file:/opt/kafka_2.12-0.10.2.1/bin/../config/tools-log4j.properties
+
+```
 
 
 

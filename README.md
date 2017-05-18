@@ -1,4 +1,4 @@
-# HOW TO Quickly Setup Kafka on your MAC OS and get it to work
+# HOW TO Quickly Setup Kafka on your MAC OS
 Quickly setting up Kafka on your local box
 
 # Step 1 : Verify Java installation
